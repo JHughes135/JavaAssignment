@@ -23,6 +23,7 @@ public class GUI extends JFrame
 	private JRadioButton emailLetterButton;
 	private JRadioButton textFileButton;
 	private ButtonGroup fileTypeGroup;
+	public Line line1;
 	
 	public GUI()
 	{
@@ -30,7 +31,6 @@ public class GUI extends JFrame
 		super("Language Analyser");
 		setLayout(new FlowLayout());
 		
-		Analyser analyser1 = new Analyser();
 		
 		title = new JPanel(new FlowLayout());
 		main = new JPanel(new FlowLayout());
@@ -44,7 +44,9 @@ public class GUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				analyser1.chooseFile();
+				line1 = new Line();
+				
+				System.out.println(line1);
 									
 			}
 				

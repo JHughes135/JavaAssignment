@@ -7,7 +7,9 @@ public class Control {
 			
 			
 		GUI mainGUI = new GUI();
+		
 		mainGUI.displayGUI();
+		
 			
 			
 	}

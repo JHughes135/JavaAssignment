@@ -2,28 +2,20 @@ package com.languageanalyser;
 
 import java.io.*;
 import java.util.*;
-import java.util.regex.Pattern;
-
 import javax.swing.JFileChooser;
 
 
 
-
-public class Analyser 
+public class Line 
 {
 	
 	private JFileChooser fc = new JFileChooser();
-	public Scanner input;
-	public File inFile;
-	public FileInputStream inPFile;
-	public PrintWriter pw;
+	private Scanner input;
+	private File inFile;
 	
-	public String line;
-	
-	//-------------------------------
-	//  Method for choosing file
-	//-------------------------------
-	public void chooseFile() 
+	private String line;
+
+	public Line() 
 	{
 		fc.setDialogTitle("Analyser");
 		if(fc.showOpenDialog(fc) == JFileChooser.APPROVE_OPTION) 
@@ -33,9 +25,6 @@ public class Analyser
 	}//end of chooseFile
 	
 
-	//------------------------------------------------
-	//Method that controls overall analysis of file
-	//------------------------------------------------
 	public void analyseControl() 
 	{
 		inFile = fc.getSelectedFile();
@@ -44,11 +33,17 @@ public class Analyser
 		{
 			input = new Scanner(inFile);
 			
-			while (input.hasNext()) 
+			while (input.hasNextLine()) 
 			{		
 				line = input.nextLine();
-								
+				
+				Sentence sent = new Sentence(line);
+				
+				//System.out.printf("%s\n", line);
+												
 			}
+			
+			System.out.println("\n\n\n");
 		} 
 		catch (FileNotFoundException e1) 
 			{
@@ -56,11 +51,16 @@ public class Analyser
 			}
 			
 		input.close();
-		}//end of analyseControl
-	
-	
-	
+	}//end of analyseControl
 
-	//test
+
+	public String toString() 
+	{
+		return line ;
+	}
+	
+	
+	
+	
 	
 }
