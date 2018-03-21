@@ -1,5 +1,6 @@
 package com.languageanalyser;
 
-public class Word {
+public class Word 
+{
 
 }

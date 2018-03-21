@@ -9,9 +9,10 @@ import javax.swing.JFileChooser;
 public class Line 
 {
 	
-	private JFileChooser fc = new JFileChooser();
+	private JFileChooser fc = new JFileChooser("C:\\Users\\hughe\\OneDrive\\Documents\\College\\2nd Year\\Object Orientated programming\\Java\\Assignment\\LanguageAnalyser");
 	private Scanner input;
 	private File inFile;
+	public int noOfLines;
 	
 	private String line;
 
@@ -37,13 +38,12 @@ public class Line
 			{		
 				line = input.nextLine();
 				
-				Sentence sent = new Sentence(line);
+				noOfLines ++;
 				
-				//System.out.printf("%s\n", line);
-												
+				Sentence sent = new Sentence(line);
+									
 			}
 			
-			System.out.println("\n\n\n");
 		} 
 		catch (FileNotFoundException e1) 
 			{
@@ -60,7 +60,7 @@ public class Line
 	}
 	
 	
-	
+	//test 
 	
 	
 }
