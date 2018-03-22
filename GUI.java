@@ -47,6 +47,9 @@ public class GUI extends JFrame
 				line1 = new Line();
 				
 				System.out.println(line1);
+				
+				int lineCount = line1.noOfLines;
+				System.out.println(lineCount);
 									
 			}
 				
