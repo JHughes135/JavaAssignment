@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 
 public class GUI extends JFrame 
@@ -23,6 +24,7 @@ public class GUI extends JFrame
 	private JRadioButton emailLetterButton;
 	private JRadioButton textFileButton;
 	private ButtonGroup fileTypeGroup;
+	private JProgressBar scale;
 	public Line line1;
 	
 	public GUI()
@@ -40,7 +42,7 @@ public class GUI extends JFrame
 		title.add(text1);
 		
 		fcButton = new JButton("Choose File");
-		fcButton.addActionListener(new ActionListener()
+		fcButton.addActionListener(new ActionListener()		
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -48,12 +50,20 @@ public class GUI extends JFrame
 				
 				System.out.println(line1);
 				
-				int lineCount = line1.noOfLines;
-				System.out.println(lineCount);
+
+				System.out.printf("\n\nNumber of Lines: %d\n", Line.noOfLines);
+				System.out.printf("Number of Full Stops: %d\n", Line.fullStopCount);
+				System.out.printf("Upper Case Letters: %d", Line.upperCaseCount);
 									
-			}
-				
+			}	
+			
 		});
+		
+		//int scaleNo = (formalityCalc(Line.noOfLines, Line.fullStopCount)) * 100;
+		
+		scale = new JProgressBar(0, 100);
+		scale.setValue(0);
+		scale.setStringPainted(true);
 		
 		emailLetterButton = new JRadioButton("Email / Letter");
 		emailLetterButton.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -68,6 +78,7 @@ public class GUI extends JFrame
 		main.add(emailLetterButton);
 		main.add(textFileButton);
 		main.add(fcButton);
+		main.add(scale);
 		
 	}
 	
@@ -89,6 +100,21 @@ public class GUI extends JFrame
 	    this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
+	}
+	
+	
+	public float formalityCalc(int lines, int fullStops)
+	{
+		
+		float formality;
+		
+		float fullStopRatio = lines/fullStops;
+		//float commaRatio = commas/fullStops;
+		
+		formality = fullStopRatio; //+ commaRatio) / 2;
+		
+		
+		return formality;
 	}
 
 }

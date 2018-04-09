@@ -15,7 +15,8 @@ public class Line
 	private Scanner input;
 	private File inFile;
 	public static int noOfLines;
-	public static int fullStopCount;
+	public static int fullStopCount, upperCaseCount;
+	
 	
 	public String line;
 
@@ -26,7 +27,7 @@ public class Line
 		{
 				analyseControl();	
 		}
-	}//end of chooseFile
+	}
 	
 
 	public void analyseControl() 
@@ -41,15 +42,16 @@ public class Line
 			{		
 				line = input.nextLine();
 				
-				noOfLines ++;
+				lineCount();
 				fullStopCount();
+				upperCase();
 				
 				Sentence sent = new Sentence(line);
 									
 			}
-		
-			System.out.println(fullStopCount);
 			
+	
+						
 		} 
 		catch (FileNotFoundException e1) 
 			{
@@ -57,11 +59,12 @@ public class Line
 			}
 			
 		input.close();
-	}//end of analyseControl
+	}
 	
-	public int lineCount()
+	
+	public void lineCount()
 	{
-		return noOfLines;
+		noOfLines ++;
 	}
 	
 	
@@ -70,6 +73,20 @@ public class Line
 		fullStopCount += StringUtils.countMatches(line, ".");
 			
 	}
+	
+	public void upperCase()
+	{
+		
+		for (char letter : line.toCharArray())
+		{
+			if (Character.isUpperCase(letter))
+			{
+				upperCaseCount++;
+			}
+		}
+		
+	}
+	
 
 
 	public String toString() 
