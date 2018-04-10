@@ -2,8 +2,6 @@ package com.languageanalyser;
 
 import java.text.BreakIterator;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.regex.Pattern;
 
 public class Sentence
 {
@@ -26,16 +24,19 @@ public class Sentence
 		if (line.endsWith("."))
 		{
 			String[] sSentence = line.split("(?<=[a-z])\\.\\s+");
+			//Line is split into sentences stored in sSentence
 			
 			for (String sentence : sSentence) 
 			{
 				
+				//if first letter of sentence is lower case then is is continued from previous line
 				if(Character.isLowerCase(sentence.codePointAt(0))) 
 				{
+					//Join unfinished sentence from previous line with first sentence in new line 
 					sentence = String.join(" ",joinHolder, sentence);
 				}
 								
-				System.out.println(sentence);
+				//System.out.println(sentence);
 				sentenceCount();
 				
 				Word word = new Word(sentence);
@@ -57,7 +58,7 @@ public class Sentence
 				
 				if (sentence != " ") 
 				{
-					System.out.println(sentence);	
+					//System.out.println(sentence);	
 					sentenceCount();
 				}
 				

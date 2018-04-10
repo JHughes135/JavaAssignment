@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 
 
 public class GUI extends JFrame 
@@ -53,10 +52,11 @@ public class GUI extends JFrame
 				System.out.printf("\n\nNumber of Lines: %d\n", Line.noOfLines);
 				System.out.printf("Number of Full Stops: %d\n", Line.fullStopCount);
 				System.out.printf("Upper Case Letters: %d\n", Line.upperCaseCount);
-				System.out.printf("Word Count: %f\n", Word.noOfWords);
+				System.out.printf("Word Count: %f\n", Line.noOfWords);
 				System.out.printf("Number of characters: %f\n", Word.noOfLetters);
 				System.out.printf("Average word length: %f\n", Word.avgWordLength);
-				System.out.printf("Sentences: %f", Sentence.noOfSentences);
+				System.out.printf("Sentences: %f\n", Sentence.noOfSentences);
+				System.out.printf("Bad Words: %f", Word.badWords);
 									
 			}	
 			
