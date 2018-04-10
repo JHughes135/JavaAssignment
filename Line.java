@@ -38,7 +38,7 @@ public class Line
 		{
 			input = new Scanner(inFile);
 			
-			while (input.hasNextLine()) 
+			while (input.hasNext()) 
 			{		
 				line = input.nextLine();
 				

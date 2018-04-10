@@ -15,6 +15,7 @@ public class Sentence
 	public String part1;
 	public String part2;
 	public static String joinHolder = "";   //used to store end of line but not end of sentence
+	public static float noOfSentences;
 	
 	
 	public Sentence(String line)
@@ -35,6 +36,9 @@ public class Sentence
 				}
 								
 				System.out.println(sentence);
+				sentenceCount();
+				
+				Word word = new Word(sentence);
 				
 			}		
 			
@@ -54,12 +58,21 @@ public class Sentence
 				if (sentence != " ") 
 				{
 					System.out.println(sentence);	
+					sentenceCount();
 				}
 				
+
+				Word word = new Word(sentence);
 			}
+	
 		}
 		
 			
+	}
+	
+	public void sentenceCount()
+	{
+		noOfSentences++;
 	}
 	
 }

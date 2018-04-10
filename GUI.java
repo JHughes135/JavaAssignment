@@ -24,7 +24,6 @@ public class GUI extends JFrame
 	private JRadioButton emailLetterButton;
 	private JRadioButton textFileButton;
 	private ButtonGroup fileTypeGroup;
-	private JProgressBar scale;
 	public Line line1;
 	
 	public GUI()
@@ -53,18 +52,16 @@ public class GUI extends JFrame
 
 				System.out.printf("\n\nNumber of Lines: %d\n", Line.noOfLines);
 				System.out.printf("Number of Full Stops: %d\n", Line.fullStopCount);
-				System.out.printf("Upper Case Letters: %d", Line.upperCaseCount);
+				System.out.printf("Upper Case Letters: %d\n", Line.upperCaseCount);
+				System.out.printf("Word Count: %f\n", Word.noOfWords);
+				System.out.printf("Number of characters: %f\n", Word.noOfLetters);
+				System.out.printf("Average word length: %f\n", Word.avgWordLength);
+				System.out.printf("Sentences: %f", Sentence.noOfSentences);
 									
 			}	
 			
 		});
-		
-		//int scaleNo = (formalityCalc(Line.noOfLines, Line.fullStopCount)) * 100;
-		
-		scale = new JProgressBar(0, 100);
-		scale.setValue(0);
-		scale.setStringPainted(true);
-		
+				
 		emailLetterButton = new JRadioButton("Email / Letter");
 		emailLetterButton.setFont(new Font("Serif", Font.PLAIN, 18));
 		
@@ -78,7 +75,6 @@ public class GUI extends JFrame
 		main.add(emailLetterButton);
 		main.add(textFileButton);
 		main.add(fcButton);
-		main.add(scale);
 		
 	}
 	
