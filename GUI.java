@@ -10,6 +10,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
 
@@ -56,7 +57,17 @@ public class GUI extends JFrame
 				System.out.printf("Number of characters: %f\n", Word.noOfLetters);
 				System.out.printf("Average word length: %f\n", Word.avgWordLength);
 				System.out.printf("Sentences: %f\n", Sentence.noOfSentences);
-				System.out.printf("Bad Words: %f", Word.badWords);
+				System.out.printf("Bad Words: %f\n", Word.badWords);
+				System.out.printf("formal: %b\n", Word.formal);
+				
+				if(Word.formal == true)
+				{
+					JOptionPane.showMessageDialog(main, "Text is formal");
+				}
+				else //if(Word.formal = false)
+				{
+					JOptionPane.showMessageDialog(main,"Text is informal");
+				}
 									
 			}	
 			
@@ -75,6 +86,8 @@ public class GUI extends JFrame
 		main.add(emailLetterButton);
 		main.add(textFileButton);
 		main.add(fcButton);
+		
+		
 		
 	}
 	

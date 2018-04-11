@@ -1,5 +1,6 @@
 package com.languageanalyser;
 
+import java.io.IOException;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class Sentence
 	public static float noOfSentences;
 	
 	
-	public Sentence(String line)
+	public Sentence(String line) throws IOException
 	{
 		this.line = line;
 		
