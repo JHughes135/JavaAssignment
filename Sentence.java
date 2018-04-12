@@ -1,16 +1,13 @@
 package com.languageanalyser;
 
 import java.io.IOException;
-import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class Sentence
 {
-	
 	public ArrayList<String> sentence;
-	
-	public String line;
-	public BreakIterator iterator;
+	private String line;
+	private int last;
 	public String part1;
 	public String part2;
 	public static String joinHolder = "";   //used to store end of line but not end of sentence
@@ -20,7 +17,6 @@ public class Sentence
 	public Sentence(String line) throws IOException
 	{
 		this.line = line;
-		
 		
 		if (line.endsWith("."))
 		{
@@ -36,40 +32,41 @@ public class Sentence
 					//Join unfinished sentence from previous line with first sentence in new line 
 					sentence = String.join(" ",joinHolder, sentence);
 				}
-								
+				
 				//System.out.println(sentence);
 				sentenceCount();
 				
 				Word word = new Word(sentence);
-				
 			}		
-			
 		}
 		else
 		{
 			String[] sSentence = line.split("(?<=[a-z])\\.\\s+");
 			
-			int last = sSentence.length - 1;
+			if(sSentence.length > 1)
+			{
+				last = sSentence.length - 1;
+				
+				joinHolder = sSentence[last];
+				sSentence[last] = " ";
+			}
+			else
+			{
+				last = 0;
+				joinHolder = sSentence[last];
+			}
 			
-			joinHolder = sSentence[last];
-			sSentence[last] = " ";
 			
 			for (String sentence : sSentence) 
 			{
-				
 				if (sentence != " ") 
 				{
 					//System.out.println(sentence);	
 					sentenceCount();
 				}
-				
-
 				Word word = new Word(sentence);
 			}
-	
 		}
-		
-			
 	}
 	
 	public void sentenceCount()

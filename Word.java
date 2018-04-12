@@ -16,13 +16,10 @@ public class Word
 {
 	public String sentence;
 	public String[] words;
-	public static boolean formal;
-	public static float noOfLetters, avgWordLength, badWords;
-	public Path badLangPath;
+	public static float noOfLetters, avgWordLength, badWords, formalWords;
+	private Path badLangPath, formalLangPath;
 	private Charset charset;
-	private List<String> badLangList;
-	private String[] badLangArr;
-	
+	private List<String> badLangList, formalLangList;	
 	
 	
 	public Word(String sentence) throws IOException
@@ -34,6 +31,8 @@ public class Word
 		
 		for (String word : words)
 		{
+			word.replace(",", "");
+			word.replace(".", "");
 			noOfLetters += word.length();
 			badLanguage(word);
 			formal(word);
@@ -47,7 +46,7 @@ public class Word
 	
 	public void badLanguage(String word) throws IOException
 	{
-		//Checks if word is in badLanguge file
+		//Checks if word is in badLanguge.txt file
 		badLangPath = new File("badLanguage.txt").toPath();
 		charset = Charset.defaultCharset();
 		badLangList = Files.readAllLines(badLangPath, charset);
@@ -60,26 +59,25 @@ public class Word
 			{
 				badWords++;
 			}
-		
 		}
-		
-		
 	}
 	
 	
-	public void formal(String word)
+	public void formal(String word) throws IOException
 	{
-		String[] formalWords = {"dear", "sir", "madam", "mr", "mrs", "whom"};
+		//Checks if word is in fromalLanguge.txt file
+		formalLangPath = new File("formalLanguage.txt").toPath();
+		charset = Charset.defaultCharset();
+		formalLangList = Files.readAllLines(formalLangPath, charset);
 		word = word.toLowerCase();
 				
-		for(int i =0; i < formalWords.length; i++)
+		for(String formalWord : formalLangList) 
 		{
-	        if (Arrays.asList(formalWords).contains(word)) 
-	        {
-	        	formal = true;
-	        }
-		}
-	        	
+			if(word.equals(formalWord))
+			{
+				formalWords++;
+			}
+		} 	
 	}
 	
 	

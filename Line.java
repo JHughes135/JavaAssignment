@@ -41,21 +41,15 @@ public class Line
 			fr = new FileReader(inFile);
 			br = new BufferedReader(fr);
 			
-			
 			while ((line = br.readLine()) != null)
 			{		
-				
 				lineCount();
 				fullStopCount();
 				upperCase();
 				noOfWords += countWords(line);
 				
-				Sentence sent = new Sentence(line);
-									
-			}
-			
-	
-						
+				Sentence sent = new Sentence(line);				
+			}			
 		} 
 		catch (FileNotFoundException e1) 
 			{
@@ -65,7 +59,6 @@ public class Line
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-			
 	}
 	
 	
@@ -78,12 +71,10 @@ public class Line
 	public void fullStopCount() 
 	{
 		fullStopCount += StringUtils.countMatches(line, ".");
-			
 	}
 	
 	public void upperCase()
 	{
-		
 		for (char letter : line.toCharArray())
 		{
 			if (Character.isUpperCase(letter))
@@ -91,7 +82,6 @@ public class Line
 				upperCaseCount++;
 			}
 		}
-		
 	}
 	
 	//****** REF This code is taken from https://stackoverflow.com/questions/5864159/count-words-in-a-string-method ******

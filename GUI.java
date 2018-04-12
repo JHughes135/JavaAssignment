@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 
 public class GUI extends JFrame 
 {
-	
 	private JPanel title, main;
 	private JLabel text1;
 	private JButton fcButton;
@@ -25,13 +24,13 @@ public class GUI extends JFrame
 	private JRadioButton textFileButton;
 	private ButtonGroup fileTypeGroup;
 	public Line line1;
+	public static boolean formal = true;
 	
 	public GUI()
 	{
 		
 		super("Language Analyser");
 		setLayout(new FlowLayout());
-		
 		
 		title = new JPanel(new FlowLayout());
 		main = new JPanel(new FlowLayout());
@@ -45,11 +44,12 @@ public class GUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				reset(); //resets variables for multiple uses
 				line1 = new Line();
 				
 				System.out.println(line1);
+				formal = formalityCalc();
 				
-
 				System.out.printf("\n\nNumber of Lines: %d\n", Line.noOfLines);
 				System.out.printf("Number of Full Stops: %d\n", Line.fullStopCount);
 				System.out.printf("Upper Case Letters: %d\n", Line.upperCaseCount);
@@ -58,19 +58,17 @@ public class GUI extends JFrame
 				System.out.printf("Average word length: %f\n", Word.avgWordLength);
 				System.out.printf("Sentences: %f\n", Sentence.noOfSentences);
 				System.out.printf("Bad Words: %f\n", Word.badWords);
-				System.out.printf("formal: %b\n", Word.formal);
+				System.out.printf("formal words: %f\n", Word.formalWords);
 				
-				if(Word.formal == true)
+				if(formal == true)
 				{
 					JOptionPane.showMessageDialog(main, "Text is formal");
 				}
-				else //if(Word.formal = false)
+				else if(formal == false)
 				{
 					JOptionPane.showMessageDialog(main,"Text is informal");
-				}
-									
+				}					
 			}	
-			
 		});
 				
 		emailLetterButton = new JRadioButton("Email / Letter");
@@ -86,9 +84,6 @@ public class GUI extends JFrame
 		main.add(emailLetterButton);
 		main.add(textFileButton);
 		main.add(fcButton);
-		
-		
-		
 	}
 	
 	
@@ -112,18 +107,49 @@ public class GUI extends JFrame
 	}
 	
 	
-	public float formalityCalc(int lines, int fullStops)
+	public boolean formalityCalc()
 	{
+		float formality = 0;
 		
-		float formality;
+		if(Word.badWords > Word.formalWords)
+		{
+			formality--;
+		}
 		
-		float fullStopRatio = lines/fullStops;
-		//float commaRatio = commas/fullStops;
+		if(Line.fullStopCount >= Line.upperCaseCount)
+		{
+			formality++;
+		}
 		
-		formality = fullStopRatio; //+ commaRatio) / 2;
+		if(Word.formalWords > 0)
+		{
+			formality++;
+		}
 		
+		if(formality > 0)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+				
+
+	}
+	
+	public void reset()
+	{
+		Line.noOfLines = 0;
+		Line.fullStopCount = 0;
+		Line.upperCaseCount = 0;
+		Line.noOfWords = 0;
+		Word.noOfLetters = 0;
+		Word.avgWordLength = 0;
+		Sentence.noOfSentences = 0;
+		Word.badWords = 0;
+		Word.formalWords = 0;
 		
-		return formality;
 	}
 
 }
