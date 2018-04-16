@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JPanel;
 
-
+//This class controls the GUi 
 public class GUI extends JFrame 
 {
 	private JPanel title, main;
@@ -53,6 +53,9 @@ public class GUI extends JFrame
 		title.add(text1);
 		
 		fcButton = new JButton("Choose File");
+		
+		/*when the button is clicked it prompts the user to select a file and creates a line
+		class to begin processing each line in the file*/
 		fcButton.addActionListener(new ActionListener()		
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -73,6 +76,7 @@ public class GUI extends JFrame
 				System.out.printf("Bad Words: %f\n", Word.getBadWords());
 				System.out.printf("formal words: %f\n", Word.getFormalWords());
 				
+				//checks if file is formal or not and displays appropriate message on screen
 				if(formal == true)
 				{
 					JOptionPane.showMessageDialog(main, "Text is formal");
@@ -119,7 +123,7 @@ public class GUI extends JFrame
 		
 	}
 	
-	
+	//Processes the information taken from the file and decides whether it is formal or not
 	public boolean formalityCalc()
 	{
 		float formality = 0;
@@ -151,6 +155,8 @@ public class GUI extends JFrame
 
 	}
 	
+	
+	//Resets the program for multiple uses
 	public void reset()
 	{
 		Line.setNoOfLines(0);

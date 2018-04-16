@@ -13,7 +13,7 @@ James Hughes
 */
 package com.languageanalyser;
 
-	
+//This class is just used to run the program
 public class Control 
 {
 		

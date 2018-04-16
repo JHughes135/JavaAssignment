@@ -25,12 +25,14 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+
+//This class splits the sentence object into words, counts them, number of letters, bad and formal words and calculates average word length
 public class Word 
 {
 	public String sentence;
 	public String[] words;
 	public static float noOfLetters, avgWordLength, badWords, formalWords;
-	private Path badLangPath, formalLangPath;
+	private Path badLangPath, formalLangPath; //Paths for text files that hold formal and bad language so that they can be edited
 	private Charset charset;
 	private List<String> badLangList, formalLangList;	
 	
@@ -40,19 +42,26 @@ public class Word
 			
 		this.sentence = sentence;
 		
+		//Splits the sentence at each space
 		words = sentence.split(" ");
 		
 		for (String word : words)
 		{
-			word.replace(",", "");
-			word.replace(".", "");
+			
+			//Removes any commas or fullstops attached to word
+			word = word.replace(",", "");
+			word = word.replace(".", "");
+			
+			//Adds length of word to overall letterCount
 			noOfLetters += word.length();
-			badLanguage(word);
-			formal(word);
+			
+			badLanguage(word);//Checks word for bad language
+			formal(word);//Checks word for formal language
 			
 			System.out.println(word);			
 		}
 		
+		//Calculates average word length
 		avgWordLength = noOfLetters/Line.getNoOfWords();
 	}
 	
@@ -62,13 +71,17 @@ public class Word
 		//Checks if word is in badLanguge.txt file
 		badLangPath = new File("badLanguage.txt").toPath();
 		charset = Charset.defaultCharset();
+		
+		//Creates a list to store bad words in
 		badLangList = Files.readAllLines(badLangPath, charset);
+		
+		//Makes word lower case so it can be compared to words in text file (all lower case)
 		word = word.toLowerCase();
 		
 		
 		for(String badWord : badLangList) 
 		{
-			if(word.equals(badWord))
+			if(word.equals(badWord))//Compares word to list of bad words
 			{
 				badWords++;
 			}
@@ -82,19 +95,23 @@ public class Word
 		//Checks if word is in fromalLanguge.txt file
 		formalLangPath = new File("formalLanguage.txt").toPath();
 		charset = Charset.defaultCharset();
+		
+		//Create list to store ofrmla words in
 		formalLangList = Files.readAllLines(formalLangPath, charset);
+		
+		//Makes word lower case so it can be compared to words in text file (all lower case)
 		word = word.toLowerCase();
 				
 		for(String formalWord : formalLangList) 
 		{
-			if(word.equals(formalWord))
+			if(word.equals(formalWord))//Compares word to list of formal words
 			{
 				formalWords++;
 			}
 		} 	
 	}
 	
-	
+	//Getters and Setters
 	
 	public static float getNoOfLetters() {
 		return noOfLetters;

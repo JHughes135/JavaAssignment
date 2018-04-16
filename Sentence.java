@@ -17,6 +17,8 @@ package com.languageanalyser;
 import java.io.IOException;
 import java.util.ArrayList; 
 
+
+//This class takes the line object and splits it into sentences and counting them
 public class Sentence
 {
 	public ArrayList<String> sentence;
@@ -34,13 +36,14 @@ public class Sentence
 		
 		if (line.endsWith("."))
 		{
-			String[] sSentence = line.split("(?<=[a-z])\\.\\s+");
 			//Line is split into sentences stored in sSentence
+			String[] sSentence = line.split("(?<=[a-z])\\.\\s+");
+		
 			
 			for (String sentence : sSentence) 
 			{
 				
-				//if first letter of sentence is lower case then is is continued from previous line
+				//if first letter of sentence is lower case then it is continued from previous line
 				if(Character.isLowerCase(sentence.codePointAt(0))) 
 				{
 					//Join unfinished sentence from previous line with first sentence in new line 
@@ -50,34 +53,45 @@ public class Sentence
 				//System.out.println(sentence);
 				sentenceCount();
 				
+				//creates a word object using the sentence which splits the sentence into words and process them
 				Word word = new Word(sentence);
 			}		
 		}
-		else
+		else //if line does not end with full stop and sentence continues onto next line
 		{
+			//Line is split into sentences stored in sSentence
 			String[] sSentence = line.split("(?<=[a-z])\\.\\s+");
 			
-			if(sSentence.length > 1)
+			
+			/*
+			 * If line has more than one sentence in it
+			 */
+			if(sSentence.length > 1) 
 			{
+				//last part of the line that is split is stored in case sentence runs onto next line
 				last = sSentence.length - 1;
 				
 				joinHolder = sSentence[last];
 				sSentence[last] = " ";
 			}
-			else
+			else //if line consists of just one sentence
 			{
+				//The whole line is stored in case sentence runs onto next line
 				last = 0;
 				joinHolder = sSentence[last];
 			}
 			
 			
+			//counts sentences
 			for (String sentence : sSentence) 
 			{
-				if (sentence != " ") 
+				if (sentence != " ") //if line is not blank
 				{
 					//System.out.println(sentence);	
 					sentenceCount();
 				}
+				
+				//Creates word object to split sentence into words and process words
 				Word word = new Word(sentence);
 			}
 		}
@@ -88,6 +102,9 @@ public class Sentence
 		noOfSentences++;
 	}
 
+	
+	//Getters and Setters 
+	
 	public static float getNoOfSentences() {
 		return noOfSentences;
 	}
