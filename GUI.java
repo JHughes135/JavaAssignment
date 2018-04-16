@@ -1,3 +1,16 @@
+/*
+
+Java Assignment 2nd Year
+
+Program description: This program receives text from a text file and determines whether the text uses formal
+or informal language. It works by looking at the amount of formal and informal words used and also some 
+elements of grammar.
+
+OS: Windows 10
+Date: 16/04/2018
+James Hughes
+
+*/
 package com.languageanalyser;
 
 
@@ -50,15 +63,15 @@ public class GUI extends JFrame
 				System.out.println(line1);
 				formal = formalityCalc();
 				
-				System.out.printf("\n\nNumber of Lines: %d\n", Line.noOfLines);
-				System.out.printf("Number of Full Stops: %d\n", Line.fullStopCount);
-				System.out.printf("Upper Case Letters: %d\n", Line.upperCaseCount);
-				System.out.printf("Word Count: %f\n", Line.noOfWords);
-				System.out.printf("Number of characters: %f\n", Word.noOfLetters);
-				System.out.printf("Average word length: %f\n", Word.avgWordLength);
-				System.out.printf("Sentences: %f\n", Sentence.noOfSentences);
-				System.out.printf("Bad Words: %f\n", Word.badWords);
-				System.out.printf("formal words: %f\n", Word.formalWords);
+				System.out.printf("\n\nNumber of Lines: %d\n", Line.getNoOfLines());
+				System.out.printf("Number of Full Stops: %d\n", Line.getFullStopCount());
+				System.out.printf("Upper Case Letters: %d\n", Line.getUpperCaseCount());
+				System.out.printf("Word Count: %f\n", Line.getNoOfWords());
+				System.out.printf("Number of characters: %f\n", Word.getNoOfLetters());
+				System.out.printf("Average word length: %f\n", Word.getAvgWordLength());
+				System.out.printf("Sentences: %f\n", Sentence.getNoOfSentences());
+				System.out.printf("Bad Words: %f\n", Word.getBadWords());
+				System.out.printf("formal words: %f\n", Word.getFormalWords());
 				
 				if(formal == true)
 				{
@@ -111,17 +124,17 @@ public class GUI extends JFrame
 	{
 		float formality = 0;
 		
-		if(Word.badWords > Word.formalWords)
+		if(Word.getBadWords() > Word.getFormalWords())
 		{
 			formality--;
 		}
 		
-		if(Line.fullStopCount >= Line.upperCaseCount)
+		if(Line.getFullStopCount() >= Line.getUpperCaseCount())
 		{
 			formality++;
 		}
 		
-		if(Word.formalWords > 0)
+		if(Word.getFormalWords() > 0)
 		{
 			formality++;
 		}
@@ -140,15 +153,15 @@ public class GUI extends JFrame
 	
 	public void reset()
 	{
-		Line.noOfLines = 0;
-		Line.fullStopCount = 0;
-		Line.upperCaseCount = 0;
-		Line.noOfWords = 0;
-		Word.noOfLetters = 0;
-		Word.avgWordLength = 0;
-		Sentence.noOfSentences = 0;
-		Word.badWords = 0;
-		Word.formalWords = 0;
+		Line.setNoOfLines(0);
+		Line.setFullStopCount(0);
+		Line.setUpperCaseCount(0);
+		Line.setNoOfWords(0);
+		Word.setNoOfLetters(0);
+		Word.setAvgWordLength(0);
+		Sentence.setNoOfSentences(0);
+		Word.setBadWords(0);
+		Word.setFormalWords(0);
 		
 	}
 

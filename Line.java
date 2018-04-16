@@ -1,3 +1,16 @@
+/*
+
+Java Assignment 2nd Year
+
+Program description: This program receives text from a text file and determines whether the text uses formal
+or informal language. It works by looking at the amount of formal and informal words used and also some 
+elements of grammar.
+
+OS: Windows 10
+Date: 16/04/2018
+James Hughes
+
+*/
 package com.languageanalyser;
 
 import java.io.*;
@@ -15,9 +28,9 @@ public class Line
 	private File inFile;
 	BufferedReader br = null;
 	FileReader fr = null;
-	public static int noOfLines;
-	public static int fullStopCount, upperCaseCount;
-	public static float noOfWords;
+	private static int noOfLines;
+	private static int fullStopCount, upperCaseCount;
+	private static float noOfWords;
 	
 	
 	public String line;
@@ -32,7 +45,7 @@ public class Line
 	}
 	
 
-	public void analyseControl() 
+	private void analyseControl() 
 	{
 		inFile = fc.getSelectedFile();
 		
@@ -62,6 +75,46 @@ public class Line
 	}
 	
 	
+	public static int getNoOfLines() {
+		return noOfLines;
+	}
+
+
+	public static void setNoOfLines(int noOfLines) {
+		Line.noOfLines = noOfLines;
+	}
+
+
+	public static int getFullStopCount() {
+		return fullStopCount;
+	}
+
+
+	public static void setFullStopCount(int fullStopCount) {
+		Line.fullStopCount = fullStopCount;
+	}
+
+
+	public static int getUpperCaseCount() {
+		return upperCaseCount;
+	}
+
+
+	public static void setUpperCaseCount(int upperCaseCount) {
+		Line.upperCaseCount = upperCaseCount;
+	}
+
+
+	public static float getNoOfWords() {
+		return noOfWords;
+	}
+
+
+	public static void setNoOfWords(float noOfWords) {
+		Line.noOfWords = noOfWords;
+	}
+
+
 	public void lineCount()
 	{
 		noOfLines ++;

@@ -1,3 +1,16 @@
+/*
+
+Java Assignment 2nd Year
+
+Program description: This program receives text from a text file and determines whether the text uses formal
+or informal language. It works by looking at the amount of formal and informal words used and also some 
+elements of grammar.
+
+OS: Windows 10
+Date: 16/04/2018
+James Hughes
+
+*/
 package com.languageanalyser;
 
 
@@ -40,7 +53,7 @@ public class Word
 			System.out.println(word);			
 		}
 		
-		avgWordLength = noOfLetters/Line.noOfWords;
+		avgWordLength = noOfLetters/Line.getNoOfWords();
 	}
 	
 	
@@ -62,7 +75,8 @@ public class Word
 		}
 	}
 	
-	
+
+
 	public void formal(String word) throws IOException
 	{
 		//Checks if word is in fromalLanguge.txt file
@@ -78,6 +92,47 @@ public class Word
 				formalWords++;
 			}
 		} 	
+	}
+	
+	
+	
+	public static float getNoOfLetters() {
+		return noOfLetters;
+	}
+
+
+	public static void setNoOfLetters(float noOfLetters) {
+		Word.noOfLetters = noOfLetters;
+	}
+
+
+	public static float getAvgWordLength() {
+		return avgWordLength;
+	}
+
+
+	public static void setAvgWordLength(float avgWordLength) {
+		Word.avgWordLength = avgWordLength;
+	}
+
+
+	public static float getBadWords() {
+		return badWords;
+	}
+
+
+	public static void setBadWords(float badWords) {
+		Word.badWords = badWords;
+	}
+
+
+	public static float getFormalWords() {
+		return formalWords;
+	}
+
+
+	public static void setFormalWords(float formalWords) {
+		Word.formalWords = formalWords;
 	}
 	
 	
