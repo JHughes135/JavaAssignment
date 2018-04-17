@@ -1,5 +1,7 @@
 https://github.com/JHughes135/JavaAssignment.git
 
+https://www.youtube.com/watch?v=oG2U7pmTUXY&feature=youtu.be
+
 2nd Year Java Assignment, Language Analyser
 
 This program reads a piece of text from a txt file and determines whether the language used within the file is formal or informal. It does this by examining different aspects of the grammar and vocabulary used.
