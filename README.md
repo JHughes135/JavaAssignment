@@ -9,4 +9,4 @@ New formal and informal words can be added to the text files "badLanguage.txt" a
 "formalLanguage.txt" so that the program will recognise these words.
 Some sample text files are also available to test the program.
 
-Text file containing bad words was taken from https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/
+Text file containing bad language was taken from https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/
